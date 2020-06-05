@@ -7,6 +7,7 @@ pub use parser::parser::FILE_PREAMBLE_LENGTH;
 pub use parser::builder::ParserBuilder;
 
 pub mod detect_transfer_syntax;
+pub mod p10_header;
 pub mod parser;
 pub mod charset;
 pub mod dcmelement;
