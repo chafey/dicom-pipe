@@ -20,8 +20,6 @@ fn is_big_endian(bytes:& [u8]) -> bool {
     group > 2 && group <= 10
 }
 
-#[allow(unused_variables)]
-#[allow(unused_mut)]
 pub fn detect(bytes: &[u8] ) -> Option<TSRef> {
 
     if is_little_endian(bytes) {

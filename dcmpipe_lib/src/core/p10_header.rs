@@ -1,7 +1,5 @@
 
 
-#[allow(unused_variables)]
-#[allow(unused_mut)]
 pub fn detect(bytes: &[u8] ) -> bool {
     // check length
     if bytes.len() < 128 + 4 {
@@ -16,7 +14,7 @@ pub fn detect(bytes: &[u8] ) -> bool {
     }
 
     // check for DICM
-    if  bytes[128] =='D' as u8 && 
+    if  bytes[128] == 'D' as u8 && 
         bytes[129] == 'I' as u8 &&
         bytes[130] == 'C' as u8 && 
         bytes[131] == 'M' as u8 {
@@ -59,6 +57,14 @@ mod tests {
     fn zero_preamble_no_dicm_returns_false() {
         let mut zero_preamble_no_dicm: Vec<u8> = vec![];
         zero_preamble_no_dicm.resize(134, 0);
+
+        assert_eq!(false, detect(&zero_preamble_no_dicm));
+    }
+
+    #[test]
+    fn short_buffer_returns_false() {
+        let mut zero_preamble_no_dicm: Vec<u8> = vec![];
+        zero_preamble_no_dicm.resize(128, 0);
 
         assert_eq!(false, detect(&zero_preamble_no_dicm));
     }
